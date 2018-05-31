@@ -29,9 +29,11 @@ app.get("/", function(req, res) {
   var emptyData = {};
   res.render("index", emptyData);
 });
+
 app.get("/scrape", function(req, res) {
   axios.get("http://www.nytimes.com/").then(function(response) {
     var $ = cheerio.load(response.data);
+    console.log("DATA ---------" + response.data);
 
     $("h2.story-heading").each(function(i, element) {
       var result = {};
@@ -45,7 +47,7 @@ app.get("/scrape", function(req, res) {
 
       db.Article.create(result)
         .then(function(dbArticle) {
-          console.log(dbArticle);
+          console.log("ARTICLE *********" + dbArticle);
         })
         .catch(function(err) {
           return res.json(err);
