@@ -12,6 +12,15 @@ $.getJSON("/articles", function(data) {
   }
 });
 
+// $(document).ready(function() {
+//   $.ajax({
+//     method: "GET",
+//     url: "/articles"
+//   }).then(function(data) {
+//     console.log(data);
+//   });
+// });
+
 $(document).on("click", "p", function() {
   $("#notes").empty();
 
@@ -20,8 +29,7 @@ $(document).on("click", "p", function() {
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
-  })
-  .then(function(data) {
+  }).then(function(data) {
     console.log(data);
 
     $("#notes").append("<h2>" + data.title + "</h2>");
@@ -53,8 +61,7 @@ $(document).on("click", "#savenote", function() {
 
       body: $("#bodyinput").val()
     }
-  })
-  .then(function(data) {
+  }).then(function(data) {
     console.log(data);
 
     $("#notes").empty();
