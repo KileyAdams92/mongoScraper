@@ -1,24 +1,19 @@
-$.getJSON("/articles", function(data) {
-  for (var i = 0; i < data.length; i++) {
-    $("#articles").append(
-      "<p data-id='" +
-        data[i]._id +
-        "'>" +
-        data[i].title +
-        "<br />" +
-        data[i].link +
-        "</p>"
-    );
-  }
+$(document).on("click", "#titleinput, #bodyinput", function() {
+  $("#saved").empty();
 });
 
-// $(document).ready(function() {
-//   $.ajax({
-//     method: "GET",
-//     url: "/articles"
-//   }).then(function(data) {
-//     console.log(data);
-//   });
+// $.getJSON("/articles", function(data) {
+//   for (var i = 0; i < data.length; i++) {
+//     $("#articles").append(
+//       "<p data-id='" +
+//         data[i]._id +
+//         "'>" +
+//         data[i].title +
+//         "<br />" +
+//         data[i].link +
+//         "</p>"
+//     );
+//   }
 // });
 
 $(document).on("click", "p", function() {
@@ -64,7 +59,7 @@ $(document).on("click", "#savenote", function() {
   }).then(function(data) {
     console.log(data);
 
-    $("#notes").empty();
+    $("#saved").html("<p style='color: red'>You have saved the note!</p>");
   });
 
   $("#titleinput").val("");

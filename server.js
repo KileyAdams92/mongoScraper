@@ -26,8 +26,14 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get("/", function(req, res) {
-  var emptyData = {};
-  res.render("index", emptyData);
+  db.Article.find({})
+    .then(function(dbArticle) {
+      var articleData = { dbArticle: dbArticle };
+      res.render("index", articleData);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 app.get("/scrape", function(req, res) {
@@ -62,7 +68,8 @@ app.get("/articles", function(req, res) {
   console.log(res);
   db.Article.find({})
     .then(function(dbArticle) {
-      res.json(dbArticle);
+      var articleData = { dbArticle: dbArticle };
+      res.render("index", articleData);
     })
     .catch(function(err) {
       res.json(err);

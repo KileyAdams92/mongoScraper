@@ -23,7 +23,12 @@
         </ul>
     </div>
 </nav>
-<div class="container">
-    <span id="articles"></span>
-    <span id="notes"></span>
+<div class="container row">
+    <span id="articles" class="col-5">
+        {{#each dbArticle}}
+        <p data-id={{_id}}> {{title}} </br> {{link}}</p>
+        {{/each}}
+    </span>
+    <span id="notes" class="col-5"></span>
+    <span id="saved" class="col-2"></span>
 </div>
