@@ -1,0 +1,33 @@
+.header {
+  height: 60vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(137, 219, 218, 0.8),
+      rgba(137, 219, 218, 0.5)
+    ),
+    url(../img/newspaper.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  margin-bottom: 0;
+}
+
+h1,
+.descrip {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: "BenchNine", sans-serif;
+  font-size: 25px;
+}
+
+.navbar {
+  background-color: rgba(137, 219, 218, 0.5);
+}
+
+#articles {
+  margin-left: 100px;
+  margin-top: 100px;
+}
