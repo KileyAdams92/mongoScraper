@@ -16,25 +16,30 @@ $(document).on("click", "#titleinput, #bodyinput", function() {
 //   }
 // });
 
-$(document).on("click", "p", function() {
+$(document).on("click", ".card-article", function() {
   $("#notes").empty();
 
-  var thisId = $(this).attr("data-id");
+  var thisId = $(this).data("id");
+  console.log(thisId, "FIRST");
 
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
   }).then(function(data) {
-    console.log(data);
-
     $("#notes").append("<h2>" + data.title + "</h2>");
 
-    $("#notes").append("<input id='titleinput' name='title' >");
-
-    $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+    $("#notes").append(
+      "<input id='titleinput' name='title' placeholder='Note Title' > </br>"
+    );
 
     $("#notes").append(
-      "<button data-id='" + data._id + "' id='savenote'>Save Note</button>"
+      "<textarea id='bodyinput' name='body' placeholder='Please type your note here'></textarea></br>"
+    );
+
+    $("#notes").append(
+      "<button class='btn-primary' data-id='" +
+        data._id +
+        "' id='savenote'>Save Note</button>"
     );
 
     if (data.note) {

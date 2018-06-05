@@ -26,7 +26,12 @@
 <div class="container row">
     <span id="articles" class="col-5">
         {{#each dbArticle}}
-        <p data-id={{_id}}> {{title}} </br> {{link}}</p>
+        <div class="card p-4 card-article" data-id={{_id}}>
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">
+                <a href={{link}}>{{link}}</a>
+            </p>
+        </div>
         {{/each}}
     </span>
     <span id="notes" class="col-5"></span>
